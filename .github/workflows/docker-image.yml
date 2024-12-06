@@ -16,4 +16,4 @@ jobs:
         run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
       - name: Run Docker container to install dependencies and build
         run: |
-          docker run --rm my-app npm install && npm run build
+          docker run --rm my-image-name:$(date +%s) npm install && npm run build
