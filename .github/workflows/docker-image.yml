@@ -11,17 +11,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Check out the repository code
       - uses: actions/checkout@v4
-
-      # Build Docker image
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag my-image-name:latest
-
-      # Run Docker container to install dependencies and build the project
-      - name: Run Docker container to install dependencies and build
-        run: |
-          docker run --rm \
-            -v ${{ github.workspace }}:/usr/src/app \
-            my-image-name:latest \
-            sh -c "npm install && npm run build"
+        run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
